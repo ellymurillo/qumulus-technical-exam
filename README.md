@@ -3,8 +3,8 @@
 ## Install Dependencies
 npm install
 
-# Serve with Hot Reload
+## Serve with Hot Reload
 npm run dev
 
-# Build
+## Build
 npm run build
