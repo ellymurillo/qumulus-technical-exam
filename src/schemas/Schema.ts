@@ -14,13 +14,13 @@ export default parse(<SchemaInterface>{
       type: "string",
       format: "date",
       ageRange: {
-        min: 18,
+        min: 19,
         max: 110
       },
       isNotFutureDate: true,
       errorMessage: {
         format: "Invalid date format.",
-        ageRange: "Invalid birth date. Minimum age is 18."
+        ageRange: "Invalid birth date. Minimum age is 19."
       }
     },
     age: {
