@@ -6,7 +6,11 @@
     outlined 
     @change="onChange" 
     :model-value="control.data"
-  />
+  >
+    <template v-slot:details v-if="control.data?.length && control.errors">
+      {{ control.errors }}
+    </template>
+  </v-text-field>
 </template>
 
 <script lang="ts">

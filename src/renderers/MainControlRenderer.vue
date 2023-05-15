@@ -14,14 +14,12 @@
 <script setup lang="ts">
 import { reactive } from "vue";
 import { JsonForms, JsonFormsChangeEvent } from "@jsonforms/vue";
-import { createAjv } from "@jsonforms/core";
 import { vanillaRenderers } from "@jsonforms/vue-vanilla";
-import ajvErrors from "ajv-errors"; 
 import moment from "moment";
 
 import ControlRenderers from "../renderers";
 
-import { testRenderer } from "../composables";
+import { testRenderer, ajv, formValidator } from "../composables";
 
 import PersonInterface from "../interfaces/Person";
 
@@ -46,9 +44,6 @@ let data = reactive(<PersonInterface>{
   age: 0
 });
 
-const ajv = createAjv({allErrors: true, verbose: true, strict: false});
-ajvErrors(ajv);
-
 function onChange(event: JsonFormsChangeEvent) {
   data = event.data;
   
@@ -62,5 +57,9 @@ function calculateAge(birthDate: string) {
   return theDate.diff(theBirthDate, "years");
 }
 
-const emit = defineEmits(["customChange"]);
+formValidator("ageRange", ({min, max}, age) => calculateAge(age) >= min && calculateAge(age) <= max)
+
+formValidator("isRequired", (isRequired, data) => {
+  return isRequired ? data.length == 1 : false
+});
 </script>

@@ -46,6 +46,7 @@ export default parse(<UISchemaInterface>{
               scope: "#/properties/age",
               schema: {
                 minimum: 18,
+                maximum: 110
               },
             }
           },
