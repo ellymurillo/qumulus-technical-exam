@@ -57,9 +57,5 @@ function calculateAge(birthDate: string) {
   return theDate.diff(theBirthDate, "years");
 }
 
-formValidator("ageRange", ({min, max}, age) => calculateAge(age) >= min && calculateAge(age) <= max)
-
-formValidator("isRequired", (isRequired, data) => {
-  return isRequired ? data.length == 1 : false
-});
+formValidator("ageRange", ({min, max}, age) => calculateAge(age) >= min && calculateAge(age) <= max);
 </script>

@@ -17,7 +17,6 @@ export default parse(<SchemaInterface>{
         min: 19,
         max: 110
       },
-      isNotFutureDate: true,
       errorMessage: {
         format: "Invalid date format.",
         ageRange: "Invalid birth date. Minimum age is 19."
